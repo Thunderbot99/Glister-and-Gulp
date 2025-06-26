@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "glister-and-gulp",
+	"id": "glister_and_gulp",
 	"version": "${version}",
 	"name": "Glister & Gulp",
 	"description": "Overhauls melons and glistering melons.",
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Thunderbot99/Glister-and-Gulp"
 	},
 	"license": "MIT",
-	"icon": "assets/glister-and-gulp/icon.png",
+	"icon": "assets/glister_and_gulp/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -26,7 +26,7 @@
 		]
 	},
 	"mixins": [
-		"glister-and-gulp.mixins.json"
+		"glister_and_gulp.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
