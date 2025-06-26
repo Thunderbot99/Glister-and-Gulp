@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "glister-and-gulp",
+	"version": "${version}",
+	"name": "Glister & Gulp",
+	"description": "Overhauls melons and glistering melons.",
+	"authors": [
+		"Thunderbot99"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/glister-and-gulp/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"thunderbot99.glister_and_gulp.GlisterAndGulp"
+		],
+		"fabric-datagen": [
+			"thunderbot99.glister_and_gulp.GlisterAndGulpDataGenerator"
+		],
+		"client": [
+			"thunderbot99.glister_and_gulp.GlisterAndGulpClient"
+		]
+	},
+	"mixins": [
+		"glister-and-gulp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
