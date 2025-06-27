@@ -43,7 +43,7 @@ public class ModBlocks {
 
     public static final Block EATEN_MELON = register(
             "eaten_melon",
-            Block::new,
+            EatenMelon::new,
             AbstractBlock.Settings.create()
                     .mapColor(MapColor.LIME)
                     .strength(1.0F)

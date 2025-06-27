@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "glister_and_gulp:block/eaten_melon" }
+    "bites=1": { "model": "glister_and_gulp:block/eaten_melon_1" },
+    "bites=2": { "model": "glister_and_gulp:block/eaten_melon_2" },
+    "bites=3": { "model": "glister_and_gulp:block/eaten_melon_3" }
   }
 }

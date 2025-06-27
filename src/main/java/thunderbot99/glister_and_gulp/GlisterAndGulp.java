@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import thunderbot99.glister_and_gulp.block.ModBlocks;
+import thunderbot99.glister_and_gulp.event.ModEvents;
 
 public class GlisterAndGulp implements ModInitializer {
 	public static final String MOD_ID = "glister_and_gulp";
@@ -21,9 +22,6 @@ public class GlisterAndGulp implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlocks.initialize();
-//		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-//			BlockPos pos = hitResult.getBlockPos();
-//		});
-//		Blocks.MELON = Blocks.register(BlockKeys.MELON, );
+		ModEvents.registerEvents();
 	}
 }
