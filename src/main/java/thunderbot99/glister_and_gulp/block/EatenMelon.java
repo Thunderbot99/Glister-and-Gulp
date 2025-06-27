@@ -4,13 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -19,45 +19,76 @@ import net.minecraft.world.event.GameEvent;
 
 public class EatenMelon extends Block {
     public static final IntProperty BITES = IntProperty.of("bites", 1, 3);
+    public static final EnumProperty<Direction> FACING = EnumProperty.of("facing", Direction .class, new Direction[]{Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST});
     public EatenMelon(Settings settings) {
         super(settings);
         this.setDefaultState(this.getStateManager().getDefaultState().with(BITES, 1));
+        this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH));
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(BITES);
+        builder.add(BITES, FACING);
+    }
+
+    void shiftShape(int num, VoxelShape[] parts){
+        VoxelShape temp;
+        for(int i = 0; i < num; i++) {
+            temp = parts[0];
+            for(int j = 1; j < 4; j++) {
+                parts[j - 1] = parts[j];
+            }
+            parts[3] = temp;
+        }
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         int bites = state.get(BITES);
-        if (bites == 1) {
-            VoxelShape part1 = Block.createCuboidShape(8, 0, 0, 16, 16, 8);
-            VoxelShape part2 = Block.createCuboidShape(0, 0, 8, 16, 16, 16);
-            return VoxelShapes.union(part1, part2);
+        Direction direction = state.get(FACING);
+        VoxelShape[] parts = new VoxelShape[4];
+        parts[0] = Block.createCuboidShape(0, 0, 0, 8, 16, 8);
+        parts[1] = Block.createCuboidShape(0, 0, 8, 8, 16, 16);
+        parts[2] = Block.createCuboidShape(8, 0, 8, 16, 16, 16);
+        parts[3] = Block.createCuboidShape(8, 0, 0, 16, 16, 8);
+        if (direction == Direction.WEST) {
+            shiftShape(1, parts);
         }
-        else if (bites == 2) {
-            return Block.createCuboidShape(8, 0, 0, 16, 16, 16);
+        if (direction == Direction.SOUTH) {
+            shiftShape(2, parts);
         }
-        else {
-            return Block.createCuboidShape(8, 0, 0, 16, 16, 8);
+        if (direction == Direction.EAST) {
+            shiftShape(3, parts);
         }
+        VoxelShape combined = Block.createCuboidShape(0, 0, 0, 0, 0, 0);
+        for (int i = bites; i < 4; i++) {
+            combined = VoxelShapes.union(combined, parts[i]);
+        }
+        return combined;
     }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         int bites = state.get(BITES);
-        if (bites == 1) {
-            VoxelShape part1 = Block.createCuboidShape(8, 0, 0, 16, 16, 8);
-            VoxelShape part2 = Block.createCuboidShape(0, 0, 8, 16, 16, 16);
-            return VoxelShapes.union(part1, part2);
+        Direction direction = state.get(FACING);
+        VoxelShape[] parts = new VoxelShape[4];
+        parts[0] = Block.createCuboidShape(0, 0, 0, 8, 16, 8);
+        parts[1] = Block.createCuboidShape(0, 0, 8, 8, 16, 16);
+        parts[2] = Block.createCuboidShape(8, 0, 8, 16, 16, 16);
+        parts[3] = Block.createCuboidShape(8, 0, 0, 16, 16, 8);
+        if (direction == Direction.WEST) {
+            shiftShape(1, parts);
         }
-        else if (bites == 2) {
-            return Block.createCuboidShape(8, 0, 0, 16, 16, 16);
+        if (direction == Direction.SOUTH) {
+            shiftShape(2, parts);
         }
-        else {
-            return Block.createCuboidShape(8, 0, 0, 16, 16, 8);
+        if (direction == Direction.EAST) {
+            shiftShape(3, parts);
         }
+        VoxelShape combined = Block.createCuboidShape(0, 0, 0, 0, 0, 0);
+        for (int i = bites; i < 4; i++) {
+            combined = VoxelShapes.union(combined, parts[i]);
+        }
+        return combined;
     }
 
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
