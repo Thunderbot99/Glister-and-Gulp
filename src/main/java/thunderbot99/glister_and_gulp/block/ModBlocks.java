@@ -51,6 +51,16 @@ public class ModBlocks {
                     .pistonBehavior(PistonBehavior.DESTROY),
             false
     );
+    public static final Block GLISTER_MELON_BLOCK = register(
+            "glister_melon_block",
+            GlisterMelonBlock::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.LIME)
+                    .strength(1.0F)
+                    .sounds(BlockSoundGroup.STONE)
+                    .pistonBehavior(PistonBehavior.DESTROY),
+            true
+    );
 
     public static void initialize() {}
 }
