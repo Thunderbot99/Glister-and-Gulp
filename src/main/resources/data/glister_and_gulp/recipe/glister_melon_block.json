@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice",
+    "minecraft:glistering_melon_slice"
+  ],
+  "result": {
+    "count": 1,
+    "id": "glister_and_gulp:glister_melon_block"
+  }
+}
