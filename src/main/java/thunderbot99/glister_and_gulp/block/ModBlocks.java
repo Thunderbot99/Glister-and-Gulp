@@ -47,7 +47,7 @@ public class ModBlocks {
             AbstractBlock.Settings.create()
                     .mapColor(MapColor.LIME)
                     .strength(1.0F)
-                    .sounds(BlockSoundGroup.STONE)
+                    .sounds(BlockSoundGroup.WOOD)
                     .pistonBehavior(PistonBehavior.DESTROY),
             false
     );
@@ -57,9 +57,19 @@ public class ModBlocks {
             AbstractBlock.Settings.create()
                     .mapColor(MapColor.LIME)
                     .strength(1.0F)
-                    .sounds(BlockSoundGroup.STONE)
+                    .sounds(BlockSoundGroup.WOOD)
                     .pistonBehavior(PistonBehavior.DESTROY),
             true
+    );
+    public static final Block EATEN_GLISTER_MELON = register(
+            "glister_eaten_melon",
+            EatenGlisterMelon::new,
+            AbstractBlock.Settings.create()
+                    .mapColor(MapColor.LIME)
+                    .strength(1.0F)
+                    .sounds(BlockSoundGroup.WOOD)
+                    .pistonBehavior(PistonBehavior.DESTROY),
+            false
     );
 
     public static void initialize() {}
