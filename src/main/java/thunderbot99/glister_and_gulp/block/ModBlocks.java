@@ -1,6 +1,5 @@
 package thunderbot99.glister_and_gulp.block;
 
-import net.fabricmc.fabric.api.block.v1.FabricBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;

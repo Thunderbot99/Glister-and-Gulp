@@ -5,14 +5,15 @@
 	"name": "Glister & Gulp",
 	"description": "Overhauls melons and glistering melons.",
 	"authors": [
-		"Thunderbot99"
+		"Thunderbot99",
+		"unknowlence"
 	],
 	"contact": {
 		"homepage": "https://thunderbot99.github.io/",
 		"sources": "https://github.com/Thunderbot99/Glister-and-Gulp"
 	},
 	"license": "MIT",
-	"icon": "assets/glister_and_gulp/icon.png",
+	"icon": "assets/glister_and_gulp/textures/block/melon_inside.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
