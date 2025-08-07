@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import thunderbot99.glister_and_gulp.block.ModBlocks;
+import thunderbot99.glister_and_gulp.creative.CreativeMenu;
 import thunderbot99.glister_and_gulp.event.ModEvents;
 
 public class GlisterAndGulp implements ModInitializer {
@@ -15,5 +16,6 @@ public class GlisterAndGulp implements ModInitializer {
 	public void onInitialize() {
 		ModBlocks.initialize();
 		ModEvents.registerEvents();
+		CreativeMenu.registerItemGroup();
 	}
 }
